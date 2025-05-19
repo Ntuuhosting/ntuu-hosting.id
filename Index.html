@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NTUU HOSTING | Toko Digital Profesional</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --radius: 8px;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+    }
+    .dark-mode {
+      --primary: #3b82f6;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-light: #94a3b8;
+      --border: #334155;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      transition: background-color 0.2s ease;
+    }
+    .app {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: var(--card-bg);
+      box-shadow: var(--shadow);
+      padding: var(--space-md) var(--space-xl);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      text-decoration: none;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-text h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+    .header-actions {
+      display: flex;
+      gap: var(--space-sm);
+    }
+    .header-btn {
+      background: none;
+      border: none;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .header-btn:hover {
+      background-color: var(--border);
+      color: var(--text);
+    }
+    .search-container {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+      margin: 0 var(--space-md);
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.5rem var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      background-color: var(--card-bg);
+      color: var(--text);
+      padding-left: 2.5rem;
+    }
+    .search-icon {
+      position: absolute;
+      left: var(--space-md);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+    }
+    nav {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 var(--space-xl);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+    .nav-link {
+      padding: var(--space-md) var(--space-lg);
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-link i {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .nav-link:hover {
+      color: var(--primary);
+      border-bottom-color: var(--primary-dark);
+    }
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+
+
+      border-bottom-color: var(--primary);
+    }
+
+    .banner-section {
+      padding: var(--space-xl) 0;
+      background-color: var(--bg);
+      position: relative;
+    }
+    .banner-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      padding: 0 var(--space-xl);
+    }
+    .banner-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .banner-card-link {
+      text-decoration: none;
+      display: block;
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-right: var(--space-md);
+    }
+    .banner-card-link:last-child {
+        margin-right: 0;
+    }
+    .banner-card {
+      height: 200px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+      width: 100%;
+      background-color: var(--card-bg);
+    }
+     @media (min-width: 600px) {
+      .banner-card-link {
+        flex: 0 0 calc(50% - var(--space-md) / 2);
+        max-width: calc(50% - var(--space-md) / 2);
+      }
+    }
+    @media (min-width: 900px) {
+      .banner-card-link {
+        flex: 0 0 calc(33.333% - var(--space-md) * 2 / 3);
+        max-width: calc(33.333% - var(--space-md) * 2 / 3);
+      }
+    }
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .banner-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: var(--space-md);
+      color: white;
+    }
+    .banner-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+    }
+    .banner-desc {
+      font-size: 0.75rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .banner-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: background-color 0.2s ease;
+    }
+    .banner-nav-btn:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+    #bannerPrev {
+      left: calc(var(--space-xl) + 10px);
+    }
+    #bannerNext {
+      right: calc(var(--space-xl) + 10px);
+    }
+
+
+
+    main {
+      flex: 1;
+      padding: var(--space-xl);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .store-status {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-md);
+      margin-bottom: var(--space-xl);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #10b981;
+    }
+    .status-indicator.closed {
+      background-color: #ef4444;
+    }
+    .status-text h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .status-text p {
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+    .category {
+      margin-bottom: var(--space-xl);
+    }
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-md);
+    }
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .view-all-btn {
+      font-size: 0.875rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-sm);
+      border-radius: var(--radius);
+    }
+    .view-all-btn:hover {
+        background-color: rgba(37, 99, 235, 0.1);
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-lg);
+    }
+    .product-card {
+      background-color: transparent;
+      width: 100%;
+      height: 350px; 
+      perspective: 1000px;
+      border-radius: var(--radius);
+    }
+    .product-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .product-card:hover .product-card-inner {
+      transform: rotateY(180deg);
+    }
+    .product-card-front, .product-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: var(--radius);
+      background-color: var(--card-bg);
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card-front {
+      overflow: hidden;
+    }
+    .product-card-back {
+      transform: rotateY(180deg);
+      padding: var(--space-md);
+      justify-content: space-between;
+    }
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+    .product-content-front {
+      padding: var(--space-md);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      color: var(--text);
+    }
+    .product-desc-back {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: var(--space-sm);
+      flex-grow: 1;
+      overflow-y: auto;
+      padding-right: var(--space-sm); 
+    }
+     .product-desc-back::-webkit-scrollbar {
+        width: 5px;
+    }
+    .product-desc-back::-webkit-scrollbar-thumb {
+        background-color: var(--primary);
+        border-radius: var(--radius);
+    }
+    .product-desc-back::-webkit-scrollbar-track {
+        background-color: var(--border);
+    }
+    .product-price {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: auto; 
+    }
+    .product-actions {
+      display: flex;
+      margin-top: var(--space-md);
+    }
+    .btn {
+      padding: 0.6rem var(--space-md);
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    .btn-disabled {
+      background-color: var(--border);
+      color: var(--text-light);
+      cursor: not-allowed;
+    }
+    footer {
+      background-color: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: var(--space-xl);
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-xl);
+    }
+    .footer-section h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+      color: var(--text);
+    }
+    .footer-section p, .footer-section a {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: var(--space-sm);
+      display: block;
+      text-decoration: none;
+    }
+    .footer-section a:hover {
+      color: var(--primary);
+    }
+    .copyright {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+    @media (max-width: 1024px) {
+       .products {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+    @media (max-width: 768px) {
+      header, nav, main, footer {
+        padding: var(--space-md);
+      }
+      .nav-container {
+        justify-content: space-around; /* Agar lebih rapi di mobile */
+      }
+      .nav-link {
+        padding: var(--space-md); /* Kurangi padding di mobile */
+        font-size: 0.85rem;
+      }
+      .nav-link i {
+        font-size: 1.1rem;
+      }
+      .banner-section {
+        padding: var(--space-md) 0;
+      }
+      .banner-wrapper {
+        padding: 0 var(--space-md);
+      }
+      #bannerPrev { left: calc(var(--space-md) + 5px); }
+      #bannerNext { right: calc(var(--space-md) + 5px); }
+      .header-container {
+        flex-wrap: wrap;
+        gap: var(--space-md);
+      }
+      .search-container {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+        margin: var(--space-sm) 0 0 0;
+      }
+      .products {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+      .product-card {
+        height: 330px;
+      }
+    }
+    @media (max-width: 480px) {
+       .nav-container {
+            overflow-x: auto; /* Biarkan scroll jika terlalu banyak item */
+            justify-content: flex-start;
+        }
+        .nav-link {
+            font-size: 0.8rem;
+            padding: var(--space-sm) var(--space-md);
+        }
+        .nav-link i {
+            font-size: 1rem;
+        }
+      .products {
+        grid-template-columns: 1fr;
+      }
+       .product-card {
+        height: auto;
+        min-height: 330px;
+      }
+      .product-card-inner {
+         position: static;
+         transform: none !important;
+         box-shadow: var(--shadow);
+      }
+      .product-card:hover .product-card-inner {
+          transform: none !important;
+      }
+      .product-card-front, .product-card-back {
+          position: static;
+          transform: none !important;
+          -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+          height: auto;
+      }
+       .product-card-back {
+        border-top: 1px solid var(--border);
+        margin-top: -1px; 
+      }
+      .product-image {
+          height: 160px;
+      }
+      .banner-card {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body class="app">
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        <img src="https://files.catbox.moe/5mi6z4.jpg" alt="NTUU HOSTING Logo">
+        <div class="logo-text">
+          <h1>NTUU HOSTING</h1>
+          <span>Toko Digital Profesional</span>
+        </div>
+      </a>
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+
+
+        <input type="text" class="search-input" placeholder="Cari produk..." id="searchInput">
+      </div>
+      <div class="header-actions">
+        <button class="header-btn" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="store-status">
+      <div class="status-indicator"></div>
+      <div class="status-text">
+        <h3>Toko Sedang Buka</h3>
+        <p>Jam Operasional: 08:00 - 22:00 WIB (Setiap Hari)</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#panel" class="nav-link active">
+        <i class="fas fa-server"></i> Panel
+      </a>
+      <a href="#script" class="nav-link">
+        <i class="fas fa-code"></i> Script
+      </a>
+      <a href="#vps" class="nav-link">
+        <i class="fas fa-cloud"></i> VPS
+      </a>
+    </div>
+  </nav>
+
+  <section class="banner-section">
+    <div class="banner-wrapper">
+        <div class="banner-container" id="bannerContainer">
+        </div>
+    </div>
+    <button class="banner-nav-btn" id="bannerPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="banner-nav-btn" id="bannerNext"><i class="fas fa-chevron-right"></i></button>
+  </section>
+
+  <main>
+    <div class="container">
+      <section class="category" id="panel">
+        <div class="category-header">
+          <h2 class="category-title">Panel Pilihan</h2>
+          <button class="view-all-btn" data-category="panel">Lihat Semua</button>
+        </div>
+        <div class="products" id="panelProducts">
+        </div>
+      </section>
+
+      <section class="category" id="script">
+        <div class="category-header">
+          <h2 class="category-title">Script Premium</h2>
+          <button class="view-all-btn" data-category="script">Lihat Semua</button>
+        </div>
+        <div class="products" id="scriptProducts">
+        </div>
+      </section>
+
+      <section class="category" id="vps">
+        <div class="category-header">
+          <h2 class="category-title">VPS Unggulan</h2>
+          <button class="view-all-btn" data-category="vps">Lihat Semua</button>
+        </div>
+        <div class="products" id="vpsProducts">
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>V-Pedia</h3>
+        <p>Menyediakan solusi digital terbaik untuk kebutuhan bisnis dan pribadi Anda.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Layanan</h3>
+        <a href="#panel">Panel Server</a>
+        <a href="#script">Script Premium</a>
+        <a href="#vps">VPS Hosting</a>
+      </div>
+      <div class="footer-section">
+        <h3>Bantuan</h3>
+        <a href="#">Cara Order</a>
+        <a href="#">Pembayaran</a>
+        <a href="#">Kontak Kami</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="year"></span> V-Pedia. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    });
+
+    const globalProductImage = "https://files.catbox.moe/5mi6z4.jpg";
+    const initialDisplayCount = 4;
+
+
+
+    const productsData = {
+      panel: Array.from({ length: 8 }, (_, i) => ({
+        id: `panel-${i+1}`,
+        name: `Panel Server ${(i % 4 + 1) * 2}GB Gen ${Math.floor(i/4)+1}`,
+        price: ((i % 4 + 1) * 15000) + (Math.floor(i/4) * 5000),
+        desc: `Rasakan performa panel server unggulan ${(i % 4 + 1) * 2}GB RAM Generasi ${Math.floor(i/4)+1} kami yang dirancang untuk kecepatan super dan stabilitas maksimum. Sempurna untuk hosting aplikasi web Anda, server game online, atau menjalankan bot canggih. Dilengkapi dengan antarmuka pengguna yang intuitif dan dukungan teknis yang responsif 24/7. Optimalkan semua proyek digital Anda dengan infrastruktur terbaik dan terpercaya dari V-Pedia.`,
+        image: globalProductImage,
+        category: "panel"
+      })),
+      script: [
+        ...Array.from({ length: 8 }, (_, i) => {
+            const types = ["WhatsApp Gateway", "Telegram Automation", "Pterodactyl Manager", "E-commerce Scraper", "CRM Proyek", "Analitik Dashboard", "Billing & Invoice", "Bot Marketplace AI"];
+            const currentType = types[i % types.length];
+            return {
+                id: `script-${currentType.toLowerCase().replace(/\s+/g, '-')}-${i+1}`,
+                name: `Script ${currentType} ${i < 4 ? 'Pro v2' : 'Ultimate Edition'}`,
+                price: 28000 + (i * 2500),
+                desc: `Script ${currentType} ${i < 4 ? 'Pro v2' : 'Ultimate Edition'} V-${i+1}.0 hadir dengan serangkaian fitur premium dan eksklusif untuk otomatisasi dan peningkatan efisiensi bisnis Anda ke level berikutnya. Sangat mudah diintegrasikan dengan sistem yang ada, dilengkapi sistem keamanan berlapis, dan disertai dokumentasi panduan yang sangat lengkap. Ini adalah solusi digital cerdas untuk meningkatkan produktivitas dan profitabilitas Anda.`,
+                image: globalProductImage,
+                category: "script"
+            };
+        })
+      ],
+      vps: [
+        ...Array.from({ length: 9 }, (_, i) => {
+            const rams = [1, 2, 4, 6, 8, 12, 16, 24, 32];
+            const locations = ["Singapura (SG)", "Indonesia (ID)", "Amerika (US)", "Eropa (EU)", "Jepang (JP)"];
+            const currentRam = rams[i % rams.length];
+            const currentLoc = locations[i % locations.length];
+            return {
+                id: `vps-${currentRam}gb-${currentLoc.toLowerCase().split(' ')[0]}-${i+1}`,
+                name: `VPS ${currentRam}GB RAM ${currentLoc}`,
+                price: 32000 + (currentRam * 11000) + (i * 1800),
+                desc: `Dapatkan server virtual (VPS) dengan ${currentRam}GB RAM, didukung oleh ${Math.ceil(currentRam/2)+1} Core CPU high-performance dan penyimpanan ${currentRam*20+10}GB SSD NVMe super cepat. Terletak strategis di data center ${currentLoc}, server ini ideal untuk berbagai kebutuhan aplikasi Anda, mulai dari hosting website dengan traffic tinggi, menjalankan aplikasi enterprise, database server, hingga server game online yang membutuhkan latensi rendah dan stabilitas tinggi. Nikmati keandalan dan kecepatan terbaik di kelasnya.`,
+                image: globalProductImage,
+                category: "vps"
+            };
+        })
+      ]
+    };
+
+    const allProducts = [...productsData.panel, ...productsData.script, ...productsData.vps];
+    const categoryViewStates = { panel: false, script: false, vps: false };
+
+    function renderProductCards(containerId, items, categoryName) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const now = new Date();
+        const hours = now.getHours();
+        const isStoreOpen = hours >= 8 && hours < 22;
+
+        const itemsToDisplay = categoryViewStates[categoryName] ? items : items.slice(0, initialDisplayCount);
+
+
+
+        container.innerHTML = itemsToDisplay.map(product => `
+            <div class="product-card" data-id="${product.id}">
+                <div class="product-card-inner">
+                    <div class="product-card-front">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-content-front">
+                            <h3 class="product-title">${product.name}</h3>
+                            <div class="product-price">Rp${product.price.toLocaleString('id-ID')}</div>
+                        </div>
+                    </div>
+                    <div class="product-card-back">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-desc-back">${product.desc}</p>
+                        <div class="product-actions">
+                            <button class="${isStoreOpen ? 'btn btn-primary' : 'btn btn-disabled'}" 
+                              ${isStoreOpen ? `onclick="location.href='https://wa.me/6281399608935?text=Halo%20Admin,%20Saya%20tertarik%20untuk%20membeli%20produk:%20${encodeURIComponent(product.name)}%20-%20Rp${product.price.toLocaleString('id-ID')}'"` : 'disabled'}>
+                              <i class="fas fa-shopping-cart"></i> ${isStoreOpen ? 'Beli Sekarang' : 'Toko Tutup'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        const viewAllBtn = document.querySelector(`.view-all-btn[data-category="${categoryName}"]`);
+        if (viewAllBtn) {
+            if (items.length <= initialDisplayCount) {
+                viewAllBtn.style.display = 'none';
+            } else {
+                viewAllBtn.style.display = 'inline-block';
+                viewAllBtn.textContent = categoryViewStates[categoryName] ? 'Tampilkan Lebih Sedikit' : 'Lihat Semua Produk';
+            }
+        }
+    }
+
+    function renderAllProducts(productsToFilter = null) {
+        renderProductCards('panelProducts', productsToFilter ? productsToFilter.filter(p => p.category === "panel") : productsData.panel, 'panel');
+        renderProductCards('scriptProducts', productsToFilter ? productsToFilter.filter(p => p.category === "script") : productsData.script, 'script');
+        renderProductCards('vpsProducts', productsToFilter ? productsToFilter.filter(p => p.category === "vps") : productsData.vps, 'vps');
+    }
+    
+    document.querySelectorAll('.view-all-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+            categoryViewStates[category] = !categoryViewStates[category];
+            const currentSearchQuery = searchInput.value;
+            renderAllProducts(currentSearchQuery ? allProducts.filter(p => p.name.toLowerCase().includes(currentSearchQuery.toLowerCase()) || p.desc.toLowerCase().includes(currentSearchQuery.toLowerCase())) : null);
+        });
+    });
+
+    function searchProducts(query) {
+      let filteredProducts = allProducts;
+      if (query) {
+          const normalizedQuery = query.toLowerCase();
+          filteredProducts = allProducts.filter(product => 
+            product.name.toLowerCase().includes(normalizedQuery) || 
+            product.desc.toLowerCase().includes(normalizedQuery)
+          );
+      }
+      renderAllProducts(filteredProducts);
+      
+      if (query && filteredProducts.length > 0) {
+        const firstProductCategory = filteredProducts[0].category;
+        const sectionToScroll = document.getElementById(firstProductCategory);
+        if (sectionToScroll) {
+          sectionToScroll.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      searchProducts(e.target.value);
+    });
+
+
+
+    function checkStoreHours() {
+      const now = new Date();
+      const hours = now.getHours();
+      const statusIndicator = document.querySelector('.status-indicator');
+      const statusText = document.querySelector('.status-text h3');
+
+      if (hours >= 8 && hours < 22) {
+        statusIndicator.classList.remove('closed');
+        statusText.textContent = 'Toko Sedang Buka';
+      } else {
+        statusIndicator.classList.add('closed');
+        statusText.textContent = 'Toko Sedang Tutup';
+      }
+      const currentSearchQuery = searchInput.value;
+      renderAllProducts(currentSearchQuery ? allProducts.filter(p => p.name.toLowerCase().includes(currentSearchQuery.toLowerCase()) || p.desc.toLowerCase().includes(currentSearchQuery.toLowerCase())) : null);
+    }
+    
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            this.classList.add('active');
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault(); 
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            searchInput.value = ''; 
+            Object.keys(categoryViewStates).forEach(key => categoryViewStates[key] = false);
+            renderAllProducts();
+        });
+    });
+
+    const bannerData = [
+        { img: "https://files.catbox.moe/in4e1s.png", title: "Server Andal & Cepat", desc: "Infrastruktur server terbaik untuk semua kebutuhan bisnis digital Anda.", link: "#panel" },
+        { img: "https://files.catbox.moe/5mi6z4.jpg", title: "Script Premium & Kustom", desc: "Solusi script siap pakai dan kustom untuk berbagai platform dan kebutuhan.", link: "#script" },
+        { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIMuYt9S1AyY4Btmprk3mJ7gyYc-tsOhITfQ&s", title: "VPS Cepat & Stabil Global", desc: "Virtual Private Server dengan performa tinggi dan lokasi server strategis.", link: "#vps" },
+        { img: "https://files.catbox.moe/5mi6z4.jpg", title: "Promo Terbaik Minggu Ini", desc: "Jangan lewatkan penawaran spesial dan diskon menarik untuk produk pilihan kami!", link: "https://wa.me/6281399608935?text=Info%20Promo%20Minggu%20Ini" },
+        { img: "https://files.catbox.moe/5mi6z4.jpg", title: "Keamanan Data Terjamin", desc: "Prioritas utama kami adalah keamanan dan privasi data Anda bersama layanan Ntuu hosting", link: "#" }
+    ];
+
+    const bannerContainer = document.getElementById('bannerContainer');
+    let currentBannerIndex = 0;
+    let bannerInterval;
+    let bannerItemsToShow = calculateBannerItemsToShow();
+    
+    const allBannerItems = [...bannerData, ...bannerData, ...bannerData]; 
+
+    function calculateBannerItemsToShow() {
+        if (window.innerWidth < 600) return 1;
+        if (window.innerWidth < 900) return 2;
+        return 3;
+    }
+
+    function renderBanners() {
+        bannerContainer.innerHTML = allBannerItems.map(banner => `
+            <a href="${banner.link || '#'}" target="${(banner.link && banner.link !== '#') ? '_blank' : '_self'}" class="banner-card-link">
+                <div class="banner-card">
+                    <img src="${banner.img}" alt="${banner.title}" class="banner-image">
+                    <div class="banner-overlay">
+                        <h3 class="banner-title">${banner.title}</h3>
+                        <p class="banner-desc">${banner.desc}</p>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+        updateBannerPosition(false);
+    }
+    
+    function updateBannerPosition(withTransition = true) {
+        if (!bannerContainer.firstChild) return;
+        const cardLinkElement = bannerContainer.querySelector('.banner-card-link');
+        if (!cardLinkElement) return;
+
+
+
+        const cardWidth = cardLinkElement.offsetWidth;
+        const gap = parseFloat(getComputedStyle(cardLinkElement).marginRight);
+        const totalCardWidth = cardWidth + gap;
+        
+        bannerContainer.style.transition = withTransition ? 'transform 0.5s ease-in-out' : 'none';
+        bannerContainer.style.transform = `translateX(-${currentBannerIndex * totalCardWidth}px)`;
+    }
+
+    function nextBanner() {
+        currentBannerIndex++;
+        updateBannerPosition();
+        if (currentBannerIndex >= bannerData.length * 2) { 
+             setTimeout(() => {
+                currentBannerIndex = bannerData.length;
+                updateBannerPosition(false);
+             }, 500);
+         }
+    }
+    
+    function prevBanner() {
+        currentBannerIndex--;
+        updateBannerPosition();
+        if (currentBannerIndex < bannerData.length) {
+            setTimeout(() => {
+                currentBannerIndex = bannerData.length * 2 -1;
+                if(currentBannerIndex < 0) currentBannerIndex = 0;
+                updateBannerPosition(false);
+            }, 500);
+        }
+    }
+
+    function startBannerAutoScroll() {
+        stopBannerAutoScroll();
+        bannerInterval = setInterval(nextBanner, 3000);
+    }
+
+    function stopBannerAutoScroll() {
+        clearInterval(bannerInterval);
+    }
+
+    document.getElementById('bannerNext').addEventListener('click', () => {
+        nextBanner();
+        stopBannerAutoScroll(); 
+        startBannerAutoScroll(); 
+    });
+    document.getElementById('bannerPrev').addEventListener('click', () => {
+        prevBanner();
+        stopBannerAutoScroll();
+        startBannerAutoScroll();
+    });
+    
+    bannerContainer.addEventListener('mouseenter', stopBannerAutoScroll);
+    bannerContainer.addEventListener('mouseleave', startBannerAutoScroll);
+    
+    window.addEventListener('resize', () => {
+        bannerItemsToShow = calculateBannerItemsToShow();
+        renderBanners(); 
+        currentBannerIndex = bannerData.length; 
+        updateBannerPosition(false); 
+    });
+
+    checkStoreHours();
+    renderAllProducts();
+    currentBannerIndex = bannerData.length; 
+    renderBanners();
+    startBannerAutoScroll();
+    setInterval(checkStoreHours, 60000); 
+  </script>
+</body>
+</html>
